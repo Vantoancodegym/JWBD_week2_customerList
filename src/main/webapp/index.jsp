@@ -1,7 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%--
 
   Created by IntelliJ IDEA.
@@ -17,44 +16,18 @@
     <title>Customer list</title>
   </head>
   <body>
-  <%
-    class Customer{
-      String name;
-      String birthday;
-      String address;
-      String imgLink;
-      Customer(String name, String birthday, String address, String imgLink){
-        this.name=name;
-        this.birthday=birthday;
-        this.address=address;
-        this.imgLink=imgLink;
-      }
-
-      public String getName() {
-        return name;
-      }
-
-      public void setName(String name) {
-        this.name = name;
-      }
-    }
-    List<Customer> listCus=new ArrayList<>();
-    listCus.add(new Customer("toan1","15-01-1993","thai binh1","anh1.com"));
-    listCus.add(new Customer("toan2","15-01-1993","thai binh2","anh1.com"));
-    listCus.add(new Customer("toan3","15-01-1993","thai binh3","anh1.com"));
-    listCus.add(new Customer("toan4","15-01-1993","thai binh4","anh1.com"));
-    request.setAttribute("listCus",listCus);
-  %>
+  <form method="post" action="/getlist">
+    <input type="submit" value="Get List">
+  </form>
   <table style="border: 1px black solid">
 <c:forEach items="${listCus}" var="obj">
   <tr>
     <td>${obj.getName()}</td>
-<%--    <td>${obj}</td>--%>
-<%--    <td>${obj}</td>--%>
-<%--    <td>${obj}</td>--%>
+    <td>${obj.getBirthday()}</td>
+    <td>${obj.getAddress()}</td>
+    <td>${obj.getImgLink()}</td>
   </tr>
 </c:forEach>
   </table>
-
   </body>
 </html>
